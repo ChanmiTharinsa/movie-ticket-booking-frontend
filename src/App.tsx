@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RegisterPage from "./pages/RegisterPage";
 import AdminMoviesPage from "./pages/AdminMoviesPage";
+import AdminShowsPage from "./pages/AdminShowsPage";
+import AdminTheatresPage from "./pages/AdminTheatresPage";
 
 export default function App() {
   return (
@@ -28,6 +30,22 @@ export default function App() {
               <AdminMoviesPage />
             </ProtectedRoute>
           }
+        />
+        <Route
+        path="/admin/shows"
+        element={
+          <ProtectedRoute role="ADMIN">
+            <AdminShowsPage />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path="/admin/theatres"
+        element={
+          <ProtectedRoute role="ADMIN">
+            <AdminTheatresPage />
+          </ProtectedRoute>
+        }
         />
       </Routes>
     </>

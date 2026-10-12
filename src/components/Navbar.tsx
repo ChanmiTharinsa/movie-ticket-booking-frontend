@@ -18,6 +18,8 @@ export default function Navbar() {
           <>
             <Link to="/">Movies</Link>
             {user.role === "ADMIN" && <Link to="/admin/movies">Manage Movies</Link>}
+            {user.role === "ADMIN" && <Link to="/admin/theatres">Manage Theatres</Link>}
+            {user.role === "ADMIN" && <Link to="/admin/shows">Manage Shows</Link>}
             <span className="nav-user">{user.email}</span>
             <button onClick={handleSignOut}>Sign Out</button>
           </>
