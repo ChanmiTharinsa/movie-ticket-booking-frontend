@@ -17,6 +17,7 @@ export default function Navbar() {
         {user ? (
           <>
             <Link to="/">Movies</Link>
+            {user.role === "ADMIN" && <Link to="/admin/movies">Manage Movies</Link>}
             <span className="nav-user">{user.email}</span>
             <button onClick={handleSignOut}>Sign Out</button>
           </>

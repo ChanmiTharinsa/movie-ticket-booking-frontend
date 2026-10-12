@@ -4,6 +4,7 @@ import MoviesPage from "./pages/MoviesPage";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RegisterPage from "./pages/RegisterPage";
+import AdminMoviesPage from "./pages/AdminMoviesPage";
 
 export default function App() {
   return (
@@ -17,6 +18,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <MoviesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/movies"
+          element={
+            <ProtectedRoute role="ADMIN">
+              <AdminMoviesPage />
             </ProtectedRoute>
           }
         />
