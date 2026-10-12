@@ -79,4 +79,7 @@ src/
 
 ## Repository Submission Process
 
-(Copy this section from your backend README and change the repository name to the frontend one.)
+1. Work on feature branches, then merge them into `main`.
+2. Push `main` to GitHub: `git push origin main`.
+3. Check that the README displays on the GitHub page.
+4. Submit the repository URL: https://github.com/ChanmiTharinsa/movie-ticket-booking-frontend
