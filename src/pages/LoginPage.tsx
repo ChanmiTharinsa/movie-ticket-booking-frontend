@@ -28,9 +28,19 @@ export default function LoginPage() {
 
   return (
     <div className="auth-card">
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       {error && <div className="error-box">{error}</div>}
       <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="firstName">First Name</label>
+          <input id="firstName" value={firstName} required
+            onChange={(e) => setFirstName(e.target.value)} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Last Name</label>
+          <input id="lastName" value={lastName}
+            onChange={(e) => setLastName(e.target.value)} />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input id="email" type="email" value={email} required
@@ -42,10 +52,10 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button className="btn" type="submit" disabled={loading}>
-          {loading ? "Signing in..." : "Sign In"}
+          {loading ? "Creating account..." : "Sign Up"}
         </button>
       </form>
-      <p>No account? <Link to="/register">Sign up</Link></p>
+      <p>Already have an account? <Link to="/login">Sign in</Link></p>
     </div>
   );
 }
