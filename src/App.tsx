@@ -7,6 +7,8 @@ import RegisterPage from "./pages/RegisterPage";
 import AdminMoviesPage from "./pages/AdminMoviesPage";
 import AdminShowsPage from "./pages/AdminShowsPage";
 import AdminTheatresPage from "./pages/AdminTheatresPage";
+import ShowsPage from "./pages/ShowsPage";
+import BookingPage from "./pages/BookingPage";
 
 export default function App() {
   return (
@@ -46,6 +48,14 @@ export default function App() {
             <AdminTheatresPage />
           </ProtectedRoute>
         }
+        />
+        <Route
+        path="/movies/:movieId/shows"
+        element={<ProtectedRoute><ShowsPage /></ProtectedRoute>}
+        />
+        <Route
+        path="/book/:showId"
+        element={<ProtectedRoute><BookingPage /></ProtectedRoute>}
         />
       </Routes>
     </>

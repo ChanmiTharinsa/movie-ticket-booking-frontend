@@ -26,3 +26,24 @@ export interface Show {
   ticketPrice: number;
   status: string;
 }
+
+export interface Booking {
+  bookingId: string;
+  userId: string;
+  showId: string;
+  numberOfTickets: number;
+  seatNumbers: string[];
+  bookingDate: string;
+  totalAmount: number;
+  status: string;
+}
+
+export interface Payment {
+  paymentId: string;
+  bookingId: string;
+  paymentDate: string;
+  amount: number;
+  status: string;
+  method: string;
+  bookingStatus: string;
+}

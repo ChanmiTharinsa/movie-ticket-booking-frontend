@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../api/api";
 import type { Movie } from "../types/models";
 
@@ -30,6 +31,11 @@ export default function MoviesPage() {
             <p>{m.durationMinutes} min</p>
             <p>{m.description}</p>
             <span className="badge">{m.status}</span>
+            <p>
+              <Link className="btn-link" to={`/movies/${m.movieId}/shows`}>
+                View Shows
+              </Link>
+            </p>
           </div>
         ))}
       </div>
