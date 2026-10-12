@@ -1,75 +1,82 @@
-# React + TypeScript + Vite
+# Movie Ticket Booking System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript web application for the Movie Ticket Booking System. Customers can browse movies, pick seats, book tickets and pay. Admins can manage movies, theatres and shows. It talks to the Spring Boot backend with JWT authentication.
 
-Currently, two official plugins are available:
+Backend repository: https://github.com/ChanmiTharinsa/movie-ticket-booking-backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technologies
 
-## React Compiler
+- React 19 with TypeScript
+- Vite
+- React Router
+- Axios
+- Plain CSS (responsive layout)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Sign up and sign in with JWT authentication
+- Protected routes and role-based access (ADMIN / USER)
+- Browse movies and view the shows for each movie
+- Seat selection with a live total price
+- Booking with server-side validation errors shown on screen (for example seat conflicts)
+- Payment page with a "simulate failed payment" option and retry
+- My Bookings page with Cancel
+- Admin pages to add and list movies, theatres and shows
+- Loading states and error messages on every page
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## How to Run
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Install Node.js (LTS).
+2. Start the backend first. It must run on `http://localhost:8081` (see the backend README).
+3. In this project folder, run:
 
 ```
+npm install
+npm run dev
+```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+4. Open `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Default Admin Login
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Email: `admin@moviebooking.com`
+- Password: `Admin@123`
+
+New users who sign up get the normal user role.
+
+## Pages
+
+| Route | Page | Access |
+|---|---|---|
+| `/login` | Sign in | Public |
+| `/register` | Sign up | Public |
+| `/` | Movies | Signed in |
+| `/movies/:movieId/shows` | Shows for a movie | Signed in |
+| `/book/:showId` | Seat selection and booking | Signed in |
+| `/payment/:bookingId` | Payment | Signed in |
+| `/my-bookings` | My bookings and cancel | Signed in |
+| `/admin/movies` | Manage movies | Admin |
+| `/admin/theatres` | Manage theatres | Admin |
+| `/admin/shows` | Manage shows | Admin |
+
+## Project Structure
 
 ```
+src/
+  api/          axios instance with the JWT interceptor
+  components/   Navbar, ProtectedRoute
+  context/      AuthContext (sign in, sign up, sign out)
+  pages/        all pages
+  types/        TypeScript types
+  utils/        helpers
+```
+
+## Future Expansion
+
+1. **Interactive seat layout:** show the real theatre layout with the already booked seats greyed out, so users can see which seats are free before they choose.
+2. **Email and SMS notification screen:** let users choose how they receive booking confirmations and payment receipts, and show a confirmation message after booking.
+3. **Movie posters and trailers:** show a poster and a trailer on each movie card to make browsing easier and more attractive.
+
+## Repository Submission Process
+
+(Copy this section from your backend README and change the repository name to the frontend one.)
