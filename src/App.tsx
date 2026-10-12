@@ -9,6 +9,8 @@ import AdminShowsPage from "./pages/AdminShowsPage";
 import AdminTheatresPage from "./pages/AdminTheatresPage";
 import ShowsPage from "./pages/ShowsPage";
 import BookingPage from "./pages/BookingPage";
+import PaymentPage from "./pages/PaymentPage";
+import MyBookingsPage from "./pages/MyBookingsPage";
 
 export default function App() {
   return (
@@ -56,6 +58,14 @@ export default function App() {
         <Route
         path="/book/:showId"
         element={<ProtectedRoute><BookingPage /></ProtectedRoute>}
+        />
+        <Route
+        path="/payment/:bookingId"
+        element={<ProtectedRoute><PaymentPage /></ProtectedRoute>}
+        />
+        <Route
+        path="/my-bookings"
+        element={<ProtectedRoute><MyBookingsPage /></ProtectedRoute>}
         />
       </Routes>
     </>
